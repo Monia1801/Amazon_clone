@@ -7,6 +7,8 @@ import {deliveryOptions} from './deliveryOptions.js';
 // Default Export
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
+function renderOrderSummary(){
+
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
@@ -130,5 +132,9 @@ document.querySelectorAll('.js-delete-link')
     element.addEventListener('click',()=>{
       const {productId,deliveryOptionId}=element.dataset; 
       updateDeliveryOption(productId,deliveryOptionId);
+      renderOrderSummary();
     });
   });
+}
+
+renderOrderSummary();
