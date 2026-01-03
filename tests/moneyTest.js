@@ -1,17 +1,23 @@
 import {formatCurrency} from '../scripts/utils/money.js';
 
-console.log('test-suite: formatCurrency');
+//describe(name of test suite in string, function to test in test suite) is used to create a test suite
+describe('test suite: fromatCurrency',()=>{
 
-console.log('convert dollars to cents');
-if(formatCurrency(2095) === '20.95') console.log('Passed');
-else console.log('Failed'); 
+  //it(name of the test in string, function to test) is used to create test
+  it('converts cents into dollars',()=>{
 
-console.log('works with 0');
-if(formatCurrency(0) === '0.00') console.log('passed');
-else console.log('failed');
+    //instead of using if-else we can use expect to compare to values
+    //expect converts the parameter to an object
+    expect(formatCurrency(2095)).toEqual('20.95');
+  });
 
-console.log('rounds up to nearest cents');
-if(formatCurrency(2000.5) === '20.01') console.log('passed');
-else console.log('failed');
+  it('works with 0',()=>{
+    expect(formatCurrency(0)).toEqual('0.00');
+  });
 
+  it('rounds up to the nearest cent',()=>{
+    expect(formatCurrency(2000.5)).toEqual('20.01');
+  });
+});
 
+//after completing this load it in the test.html file
